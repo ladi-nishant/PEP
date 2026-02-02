@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BMI Calculator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-gray-100">
+
+  <div class="bg-white p-6 w-72 rounded-lg shadow-md text-center">
+    <h2 class="text-xl font-semibold mb-4">BMI Calculator</h2>
+
+    <input
+      type="text"
+      id="name"
+      placeholder="Name"
+      class="w-full mb-3 px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-black"
+    />
+
+    <input
+      type="number"
+      id="weight"
+      placeholder="Weight (kg)"
+      class="w-full mb-3 px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-black"
+    />
+
+    <input
+      type="number"
+      id="height"
+      placeholder="Height (cm)"
+      class="w-full mb-4 px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-black"
+    />
+
+    <button
+      onclick="calculateBMI()"
+      class="w-full bg-black text-white py-2 rounded hover:bg-gray-800 transition"
+    >
+      Calculate
+    </button>
+
+    <p id="result" class="mt-4 text-sm font-medium"></p>
+  </div>
+
+  <script>
+    function calculateBMI() {
+      const name = document.getElementById("name").value;
+      const weight = document.getElementById("weight").value;
+      const height = document.getElementById("height").value;
+
+      if (!name || !weight || !height) {
+        document.getElementById("result").innerText = "Please fill all fields";
+        return;
+      }
+
+      const heightInMeters = height / 100;
+      const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(2);
+
+      document.getElementById("result").innerText =
+        `${name}, your BMI is ${bmi}`;
+    }
+  </script>
+
+</body>
+</html>
