@@ -1,0 +1,8 @@
+body{
+  text-align: center;
+}
+
+input,textarea,button{
+  padding:8px;
+  margin:5px;
+}
